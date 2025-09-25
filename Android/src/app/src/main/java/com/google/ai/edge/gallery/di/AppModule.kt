@@ -31,6 +31,9 @@ import com.google.ai.edge.gallery.data.DefaultDownloadRepository
 import com.google.ai.edge.gallery.data.DownloadRepository
 import com.google.ai.edge.gallery.proto.Settings
 import com.google.ai.edge.gallery.proto.UserData
+import com.google.ai.edge.gallery.chatlog.ChatLogRepository
+import dagger.hilt.android.qualifiers.ApplicationContext
+
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -109,3 +112,10 @@ internal object AppModule {
     return DefaultDownloadRepository(context, lifecycleProvider)
   }
 }
+    // Provides ChatLogRepository
+    @Provides
+    @Singleton
+    fun provideChatLogRepository(@ApplicationContext context: Context): ChatLogRepository {
+        return ChatLogRepository.get(context)
+    }
+
