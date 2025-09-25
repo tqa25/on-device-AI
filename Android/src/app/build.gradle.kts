@@ -55,11 +55,9 @@ android {
     }
   }
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-  }
-  kotlinOptions {
-    jvmTarget = "11"
+    sourceCompatibility = JavaVe17sion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+ jvmTarget = "17"
     freeCompilerArgs += "-Xcontext-receivers"
   }
   buildFeatures {
@@ -104,7 +102,11 @@ dependencies {
   implementation(platform(libs.firebase.bom))
   implementation(libs.firebase.analytics)
   implementation(libs.androidx.exifinterface)
-  kapt(libs.hilt.android.compiler)
+  kapt(libs.hilt.android.comp
+  // Room persistence library for chat logs
+  implementation("androidx.room:room-runtime:2.6.1")
+  implementation("androidx.room:room-ktx:2.6.1")
+  kapt("androidx.room:room-compiler:2.6.1")iler)
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
@@ -113,7 +115,6 @@ dependencies {
   androidTestImplementation(libs.hilt.android.testing)
   debugImplementation(libs.androidx.ui.tooling)
   debugImplementation(libs.androidx.ui.test.manifest)
-}
 
 protobuf {
   protoc { artifact = "com.google.protobuf:protoc:4.26.1" }
