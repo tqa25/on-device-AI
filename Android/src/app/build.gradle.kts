@@ -117,6 +117,16 @@ dependencies {
   debugImplementation(libs.androidx.ui.test.manifest)
 
 protobuf {
-  protoc { artifact = "com.google.protobuf:protoc:4.26.1" }
-  generateProtoTasks { all().forEach { it.plugins { create("java") { option("lite") } } } }
+    protoc {
+        artifact = "com.google.protobuf:protoc:4.26.1"
+    }
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                create("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }
