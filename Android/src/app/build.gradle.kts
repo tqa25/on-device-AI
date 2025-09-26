@@ -138,17 +138,21 @@ dependencies {
 }
 
 // Protobuf plugin configuration (Kotlin DSL chuẩn + bật "lite")
-protobuf {
+generateProtoTasks {
+  all().forEach { task: com.google.protobuf.gradle.GenerateProtoTask ->
+    task.builtins {
+      maybeCreate("java").apply {
+        option("lite")
+      }
+    }
+  }
+}
   protoc {
     artifact = "com.google.protobuf:protoc:4.26.1"
   }
-  generateProtoTasks {
-    all().forEach { task: com.google.protobuf.gradle.GenerateProtoTask ->
-      task.builtins {
-        // Java codegen + lite runtime
-        named("java") {
-          option("lite")
+      }
         }
+    } }
       }
     }
   }
